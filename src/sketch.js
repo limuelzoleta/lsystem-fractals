@@ -1,6 +1,6 @@
 const axiom = "F";
 let sentence = axiom;
-let length = 100;
+let length = 0;
 const rules = [
   {
     input: "F",
@@ -26,7 +26,8 @@ function generate() {
     }
   }
   sentence = nextSentence;
-  createP(sentence);
+  const sentenceP = createP(sentence);
+  sentenceP.parent('pContainer')
   turtle();
 }
 
@@ -42,7 +43,6 @@ function turtle () {
     let current = sentence.charAt(i);
 
     if(current == "F") {
-      console.log('passed');
       line(0, 0, 0, -length);
       translate(0, -length);
     } else if (current === '+') {
@@ -59,10 +59,17 @@ function turtle () {
 }
 
 function setup() {
-  createCanvas(400, 400);
+  const dimension = displayWidth / 3.5;
+  length = dimension * 0.25;
+  const canvas = createCanvas(dimension, dimension);
+  canvas.parent('canvas');
   background(51);
   turtle();
-  createP(axiom);
+  const axiomP = createP(`Axiom: ${axiom}`);
+  axiomP.parent('canvas');
+  axiomP.addClass('axiom');
+
   const button = createButton("Generate");
   button.mousePressed(() => generate());
+  button.parent('canvas');
 }

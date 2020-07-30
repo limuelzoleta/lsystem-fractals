@@ -6,6 +6,31 @@
   <title>L-System Fractals</title>
 </head>
 <body>
+  <style>
+    html {
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+    }
+    #canvas p {
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+    #container {
+      display: flex;
+      justify-content: flex-end;
+    }
+    #pContainer {
+      max-height: 90vh;
+      overflow-y: scroll;
+      flex-grow: 1;
+      margin-left: 1rem;
+    }
+  </style>
+  <div id="container">
+    <div id="canvas"></div>
+    <div id="pContainer"></div>
+  </div>
+
   <script src="./src/p5.min.js"></script>
   <script src="./src/sketch.js"></script>
 </body>
